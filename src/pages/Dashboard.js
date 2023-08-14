@@ -14,8 +14,9 @@ import Card from "components/Card";
 import "./Dashboard.scss";
 
 import { CSVLink } from "react-csv";
-import { Alert, Button, Modal, Image } from "react-bootstrap";
+import { Alert, Button, Modal, Image, Table } from "react-bootstrap";
 import api from "../apis/api";
+import ToggleField from "components/forms/Toggle";
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
@@ -31,9 +32,8 @@ const Dashboard = () => {
     const { data: partnerDetails, error: fetchDetailsError } = useSWR(
         `/partners/${user.id}`
     );
-    const { data: requests, error: fetchRequestsError } = useSWR(
-        `/partners/requests`
-    );
+    const { data: requests, error: fetchRequestsError } =
+        useSWR(`/partners/requests`);
     const { data: signups, error: fetchSignupsError } = useSWR(
         `/exchange/signups/${user.id}`
     );
@@ -92,15 +92,30 @@ const Dashboard = () => {
                                 <AccountDetails details={partnerDetails} />
                             </Card>
                         </section>
-						<section>
-                            <Button
-                                block
-                                variant="primary"
-                                className="mt-2"
-                            >
+                        <section>
+                            <Card>
+                                <h4>Required Claims</h4>
+                                {/* <ErrorMessage error={fetchDetailsError} />
+                                <Loader loading={isFetching} /> */}
+                                <div className="d-flex flex-row">
+                                    <Table>
+                                        <tbody>
+                                            <tr>
+                                                <td>Full Name</td>
+                                                <td>
+                                                    <ToggleField value="true"></ToggleField>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </Table>
+                                </div>
+                            </Card>
+                        </section>
+                        <section>
+                            <Button block variant="primary" className="mt-2">
                                 Update account details
                             </Button>
-						</section>
+                        </section>
 
                         {/* <section>
                             <Button
