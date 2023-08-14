@@ -7,6 +7,7 @@ const flattenData = data => {
         email: data?.email,
         tagLine: data?.tagLine,
         description: data?.description
+        // expire: data?.expire
     };
 };
 
@@ -28,6 +29,10 @@ const getColumns = data => {
             label: "Description",
             format: v => v
         }
+        // expire: {
+        //     label: "Expire duration",
+        //     format: v => v
+        // }
     };
 
     return Object.keys(data).map(key => {

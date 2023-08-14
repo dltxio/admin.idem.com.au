@@ -40,11 +40,11 @@ const Dashboard = () => {
     const { data: invoices } = useSWR(`/invoices/${user.id}`);
 
     // model for update details
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
     const [showCrypto, setShowCrypto] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
 
     const handleCryptoClose = () => setShowCrypto(false);
     const handleCryptoShow = () => setShowCrypto(true);
@@ -259,7 +259,7 @@ const Dashboard = () => {
                                 )}
                                 <ErrorMessage error={fetchRequestsError} />
                                 <Loader loading={isFetching} />
-                                <RequestsTable transactions={requests} />
+                                <RequestsTable transactions={signups} />
                             </Card>
                         </section>
                     </section>
