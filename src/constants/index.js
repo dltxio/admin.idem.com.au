@@ -1,0 +1,1 @@
+exports.minPasswordLength = 6;
